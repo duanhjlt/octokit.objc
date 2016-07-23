@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		115619031D43CEE800ABA15F /* OCTClient+Authentication.h in Headers */ = {isa = PBXBuildFile; fileRef = 115619011D43CEE800ABA15F /* OCTClient+Authentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		115619041D43CEE800ABA15F /* OCTClient+Authentication.h in Headers */ = {isa = PBXBuildFile; fileRef = 115619011D43CEE800ABA15F /* OCTClient+Authentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		115619051D43CEE800ABA15F /* OCTClient+Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 115619021D43CEE800ABA15F /* OCTClient+Authentication.m */; };
+		115619061D43CEE800ABA15F /* OCTClient+Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 115619021D43CEE800ABA15F /* OCTClient+Authentication.m */; };
 		1643A0487CB0F07A490864C4 /* OCTClient+Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 1643A25C1DBD8EBD84D75311 /* OCTClient+Activity.m */; };
 		1643A17DA3F90662766C5154 /* OCTGitCommitFileSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 1643AE49C95AD81D363073A5 /* OCTGitCommitFileSpec.m */; };
 		1643A7C91D61AFD5A5B0036A /* OCTGitCommitFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1643A453297B5EB7A0280F7D /* OCTGitCommitFile.m */; };
@@ -513,6 +517,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		115619011D43CEE800ABA15F /* OCTClient+Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OCTClient+Authentication.h"; sourceTree = "<group>"; };
+		115619021D43CEE800ABA15F /* OCTClient+Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCTClient+Authentication.m"; sourceTree = "<group>"; };
 		1643A0ABD066520E65EA2DD7 /* git_commit_full.json */ = {isa = PBXFileReference; lastKnownFileType = file.json; path = git_commit_full.json; sourceTree = "<group>"; };
 		1643A25C1DBD8EBD84D75311 /* OCTClient+Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OCTClient+Activity.m"; sourceTree = "<group>"; };
 		1643A453297B5EB7A0280F7D /* OCTGitCommitFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCTGitCommitFile.m; sourceTree = "<group>"; };
@@ -827,6 +833,8 @@
 				D042C49E1819E12F00143E07 /* OCTAccessToken.m */,
 				8829F2BD17A0DF5300F06991 /* OCTAuthorization.h */,
 				8829F2BE17A0DF5300F06991 /* OCTAuthorization.m */,
+				115619011D43CEE800ABA15F /* OCTClient+Authentication.h */,
+				115619021D43CEE800ABA15F /* OCTClient+Authentication.m */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
@@ -1341,6 +1349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0040D8B19FEC6FD002869A6 /* OctoKit.h in Headers */,
+				115619041D43CEE800ABA15F /* OCTClient+Authentication.h in Headers */,
 				2F90338C1A4CB9E0006F6667 /* OCTMemberEvent.h in Headers */,
 				D0040D8C19FEC6FD002869A6 /* OCTClient.h in Headers */,
 				D0040D8D19FEC6FD002869A6 /* OCTObject.h in Headers */,
@@ -1419,6 +1428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1643AF381C3B63454296D2E4 /* OCTClient+Activity.h in Headers */,
+				115619031D43CEE800ABA15F /* OCTClient+Authentication.h in Headers */,
 				2F90338B1A4CB9E0006F6667 /* OCTMemberEvent.h in Headers */,
 				1643AA827D2729506A0343EE /* OCTGitCommitFile.h in Headers */,
 				7A8F64EC17F2208500083761 /* OCTComment.h in Headers */,
@@ -1787,6 +1797,7 @@
 				D0040D8419FEC692002869A6 /* NSDateFormatter+OCTFormattingAdditions.m in Sources */,
 				D0040D8619FEC692002869A6 /* NSURL+OCTQueryAdditions.m in Sources */,
 				D0040D8819FEC692002869A6 /* NSValueTransformer+OCTPredefinedTransformerAdditions.m in Sources */,
+				115619061D43CEE800ABA15F /* OCTClient+Authentication.m in Sources */,
 				D0040D8A19FEC692002869A6 /* RACSignal+OCTClientAdditions.m in Sources */,
 				17C8B480688A8A4404BF6022 /* OCTCommitCombinedStatus.m in Sources */,
 				17C8B0082359930197AC88B8 /* OCTCommitStatus.m in Sources */,
@@ -1899,6 +1910,7 @@
 				F6CF78D616E993A500A75F63 /* RACSignal+OCTClientAdditions.m in Sources */,
 				88CD631B17D8D3DE00E2CD47 /* OCTTreeEntry.m in Sources */,
 				1643A7C91D61AFD5A5B0036A /* OCTGitCommitFile.m in Sources */,
+				115619051D43CEE800ABA15F /* OCTClient+Authentication.m in Sources */,
 				1643A0487CB0F07A490864C4 /* OCTClient+Activity.m in Sources */,
 				17C8B710BEC90F8AAD4479FC /* OCTCommitCombinedStatus.m in Sources */,
 				17C8B23A3C89D30BE89F720D /* OCTCommitStatus.m in Sources */,
