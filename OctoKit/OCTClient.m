@@ -350,7 +350,7 @@ static NSString *OCTClientOAuthClientSecret = nil;
 		}];
 	};
 
-	return [[[[[authorizationSignalWithUser(user)
+	return [[[[[[authorizationSignalWithUser(user)
 		flattenMap:^(RACTuple *clientAndResponse) {
 			RACTupleUnpack(OCTClient *client, OCTResponse *response) = clientAndResponse;
 			OCTAuthorization *authorization = response.parsedResult;
@@ -402,6 +402,18 @@ static NSString *OCTClientOAuthClientSecret = nil;
 
 			client.token = authorization.token;
 			return client;
+		}]
+		flattenMap:^(OCTClient *client) {
+			return [[[client fetchUserInfo]doNext:^(OCTUser *user) {
+				NSMutableDictionary *dic = user.dictionaryValue.mutableCopy;
+				if (!dic) {
+					dic = [NSMutableDictionary new];
+				}
+				[dic setValue:client.user.rawLogin forKey:@keypath(user.rawLogin)];
+				OCTUser *userWithRawLogin = [OCTUser modelWithDictionary:dic error:nil];
+				client.user = userWithRawLogin;
+			}]
+			mapReplace:client];
 		}]
 		replayLazily]
 		setNameWithFormat:@"+signInAsUser: %@ password:oneTimePassword:scopes:", user];
