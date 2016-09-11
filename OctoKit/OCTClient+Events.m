@@ -59,4 +59,14 @@
 	return [[[self enqueueRequest:request resultClass:OCTEvent.class fetchAllPages:YES] oct_parsedResults] skip:pageOffset];
 }
 
+- (RACSignal *)fetchPerformedEventsForUser:(OCTUser *)user notMatchingEtag:(NSString *)etag {
+	if (user == nil) {
+		return [RACSignal error:self.class.userRequiredError];
+	}
+	
+	NSURLRequest *request = [self requestWithMethod:@"GET" path:[NSString stringWithFormat:@"users/%@/events", user.login] parameters:nil notMatchingEtag:etag];
+	
+	return [self enqueueRequest:request resultClass:OCTEvent.class fetchAllPages:NO];
+}
+
 @end
