@@ -126,6 +126,38 @@
 	return [[self enqueueRequest:request resultClass:OCTContent.class] oct_parsedResults];
 }
 
+- (RACSignal *)fetchRepositoryReadme:(OCTRepository *)repository reference:(NSString *)reference mediaType:(OCTClientMediaType)mediaType {
+	NSParameterAssert(repository != nil);
+	NSParameterAssert(repository.name.length > 0);
+	NSParameterAssert(repository.ownerLogin.length > 0);
+	
+	NSString *path = [NSString stringWithFormat:@"repos/%@/%@/readme", repository.ownerLogin, repository.name];
+	NSDictionary *parameters = (reference.length > 0 ? @{ @"ref": reference } : nil);
+	
+	NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters notMatchingEtag:nil];
+	
+	if (mediaType == OCTClientMediaTypeRAW) {
+		NSString *contentType = [NSString stringWithFormat:@"application/vnd.github.%@.raw", OCTClientAPIVersion];
+		[request setValue:contentType forHTTPHeaderField:@"Accept"];
+		
+		return [[self enqueueRequest:request fetchAllPages:NO] reduceEach:^(NSHTTPURLResponse *response, NSData *data) {
+					return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+				}];
+
+	}
+	
+	if (mediaType == OCTClientMediaTypeHTML) {
+		NSString *contentType = [NSString stringWithFormat:@"application/vnd.github.%@.html", OCTClientAPIVersion];
+		[request setValue:contentType forHTTPHeaderField:@"Accept"];
+		
+		return [[self enqueueRequest:request fetchAllPages:NO] reduceEach:^(NSHTTPURLResponse *response, NSData *data) {
+					return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+				}];
+	}
+	
+	return [[self enqueueRequest:request resultClass:OCTContent.class] oct_parsedResults];
+}
+
 - (RACSignal *)fetchRepositoryWithName:(NSString *)name owner:(NSString *)owner {
 	NSParameterAssert(name.length > 0);
 	NSParameterAssert(owner.length > 0);

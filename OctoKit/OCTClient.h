@@ -168,6 +168,12 @@ typedef NS_ENUM(NSInteger, OCTClientOneTimePasswordMedium) {
 	OCTClientOneTimePasswordMediumApp,
 };
 
+typedef NS_ENUM(NSInteger, OCTClientMediaType) {
+	OCTClientMediaTypeJSON,
+	OCTClientMediaTypeHTML,
+	OCTClientMediaTypeRAW,
+};
+
 // Represents a single GitHub session.
 //
 // Most of the methods on this class return a RACSignal representing a request

@@ -104,6 +104,8 @@
 // Returns a signal which will send zero or one OCTContent.
 - (RACSignal *)fetchRepositoryReadme:(OCTRepository *)repository reference:(NSString *)reference;
 
+- (RACSignal *)fetchRepositoryReadme:(OCTRepository *)repository reference:(NSString *)reference mediaType:(OCTClientMediaType)mediaType;
+
 // Fetches a specific repository owned by the given `owner` and named `name`.
 //
 // name  - The name of the repository, must be a non-empty string.
