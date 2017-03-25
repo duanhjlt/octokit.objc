@@ -20,4 +20,19 @@
 ///  Returns a signal which will send the search result `OCTRepositoriesSearchResult`.
 - (RACSignal *)searchRepositoriesWithQuery:(NSString *)query orderBy:(NSString *)orderBy ascending:(BOOL)ascending;
 
+/// Search repositories.
+///
+/// @param language
+///
+/// @return
+- (RACSignal *)fetchPopularRepositoriesWithLanguage:(NSString *)language;
+
+/// Search users.
+///
+/// @param location
+/// @param language
+///
+/// @return
+- (RACSignal *)fetchPopularUsersWithLocation:(NSString *)location language:(NSString *)language;
+
 @end
