@@ -26,6 +26,21 @@
 	return [[self enqueueRequest:request resultClass:OCTRepositoriesSearchResult.class fetchAllPages:NO] oct_parsedResults];
 }
 
+- (RACSignal *)searchUsersWithQuery:(NSString *)query orderBy:(NSString *)orderBy ascending:(BOOL)ascending {
+	NSParameterAssert(query.length > 0);
+	
+	NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+	parameters[@"q"] = query;
+	
+	if (orderBy.length > 0) parameters[@"sort"] = orderBy;
+	parameters[@"order"] = ascending ? @"asc" : @"desc";
+	
+	NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:@"/search/users" parameters:parameters notMatchingEtag:nil];
+	[request addValue:@"application/vnd.github.v3.text-match+json" forHTTPHeaderField:@"Accept"];
+	
+	return [[self enqueueRequest:request resultClass:OCTUsersSearchResult.class fetchAllPages:NO] oct_parsedResults];
+}
+
 - (RACSignal *)fetchPopularRepositoriesWithLanguage:(NSString *)language {
 	language = language ?: @"";
 	
